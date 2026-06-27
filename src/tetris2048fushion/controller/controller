@@ -11,11 +11,11 @@ public class Controller implements IGameController {
     public void setupControls(JPanel panel, AbstractPolyomino currentBlock, IGridBoard grid) {
         InputMap inputMap = panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap actionMap = panel.getActionMap();
-
+// Mũi tên
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "MoveLeft");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "MoveRight");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "MoveDown");
-
+// WASD
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0), "MoveLeft");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0), "MoveRight");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0), "MoveDown");
@@ -47,22 +47,18 @@ public class Controller implements IGameController {
 
     @Override
     public void handleInputLeft(AbstractPolyomino fallingBlock, IGridBoard board) {
-        if (fallingBlock.canMoveLeft(board)) {
-            fallingBlock.moveLeft();
-        }
-        board.shiftAndMergeLeft();
+        fallingBlock.moveLeft();
+        board.shiftAndMergeBottomLeft();
     }
 
     @Override
     public void handleInputRight(AbstractPolyomino fallingBlock, IGridBoard board) {
-        if (fallingBlock.canMoveRight(board)) {
-            fallingBlock.moveRight();
-        }
-        board.shiftAndMergeRight();
+        fallingBlock.moveRight();
+        board.shiftAndMergeBottomRight();
     }
 
     @Override
     public void handleInputDown(AbstractPolyomino fallingBlock) {
-        fallingBlock.moveDown();
+        fallingBlock.accelerateDown();
     }
 }
