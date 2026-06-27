@@ -10,6 +10,15 @@ package tetris2048fushion.modes;
  * @author Hoàng
  */
 public abstract class ClassicLineClearMode implements IGameMode {
-    // TODO (Hoàng): Phá hủy hàng khi lấp đầy hoàn toàn không còn ô trống 
-// TODO (Hoàng): Tính tổng điểm = Tổng giá trị số x Hệ số đồng nhất 
+    
+    // Tính hệ số đồng nhất: cộng dồn nếu các ô kề nhau có giá trị giống nhau
+    protected int calculateHomogeneity(int[] row) {
+        int homogeneityMultiplier = 1;
+        for (int i = 0; i < row.length - 1; i++) {
+            if (row[i] != 0 && row[i] == row[i + 1]) {
+                homogeneityMultiplier++;
+            }
+        }
+        return homogeneityMultiplier;
+    }
 }
