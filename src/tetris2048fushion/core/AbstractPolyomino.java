@@ -14,6 +14,16 @@ public abstract class AbstractPolyomino {
     protected int x, y;
     protected int[][] shapeStructure;
     protected int[] blockValues; // TODO (Minh Thức): Khởi tạo ngẫu nhiên giá trị 2, 4, 8 
+// Khởi tạo ngẫu nhiên giá trị 2, 4, 8 cho khối
+    public AbstractPolyomino(int size) {
+        blockValues = new int[size];
+        Random random = new Random();
+        int[] allowedValues = {2, 4, 8};
+
+        for (int i = 0; i < size; i++) {
+            blockValues[i] = allowedValues[random.nextInt(allowedValues.length)];
+        }
+    }
 
     public abstract void moveLeft();
 
