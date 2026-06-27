@@ -3,25 +3,25 @@ package tetris2048fushion.ui;
 import java.util.Scanner;
 
 public class AuxiliaryScreens implements IGameScreen {
-
     private Scanner sc = new Scanner(System.in);
+    private IScreenManager screenManager;
 
-    // Main Menu
+    public AuxiliaryScreens(IScreenManager manager) {
+        this.screenManager = manager;
+    }
+
     public void showMainMenu() {
-
+        ScreenManagerImpl.clearConsole();
         System.out.println("+------------------------------------------------+");
         System.out.println("|                                                |");
         System.out.println("|             TETRIS 2048 FUSION                 |");
         System.out.println("|                                                |");
         System.out.println("+------------------------------------------------+");
-        System.out.println("|                                                |");
         System.out.println("|              [ 1. Play ]                       |");
         System.out.println("|           [ 2. How To Play ]                   |");
         System.out.println("|             [ 3. About Us ]                    |");
         System.out.println("|               [ 4. Quit ]                      |");
-        System.out.println("|                                                |");
         System.out.println("+------------------------------------------------+");
-
         System.out.print("Enter choice (1-4): ");
         handleInput(sc.nextLine());
     }
