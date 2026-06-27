@@ -1,5 +1,8 @@
 package tetris2048fushion.ui;
-
+/**
+ *
+ * @author Minh Thức
+ */
 public class ScreenManagerImpl implements IScreenManager {
     private IGameScreen currentScreen;
 
