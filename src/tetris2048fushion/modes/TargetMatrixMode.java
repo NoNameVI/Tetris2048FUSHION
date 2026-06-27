@@ -10,7 +10,17 @@ package tetris2048fushion.modes;
  * @author Hoàng
  */
 public abstract class TargetMatrixMode implements IGameMode {
-    // TODO (Hoàng): Kiểm tra danh sách nhiệm vụ ma trận (ví dụ: tạo khối 512, xóa hàng điểm cao) 
-    //(tuỳ tính sáng tạo, ông muốn thêm nhiệm vụ gì cũng được)
-    // TODO (Hoàng): Kích hoạt trạng thái Win lập tức khi đạt đủ chỉ tiêu 
+    
+    // Kiểm tra ma trận có tồn tại số lượng khối đạt targetValue yêu cầu hay không
+    protected boolean checkTargetBlocksExistence(int[][] matrix, int rows, int cols, int targetValue, int requiredCount) {
+        int count = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matrix[i][j] >= targetValue) {
+                    count++;
+                }
+            }
+        }
+        return count >= requiredCount;
+    }
 }
