@@ -30,7 +30,10 @@ public class GamePlayScreen implements IGameScreen {
     private final Scanner scanner;
     private final Random random;
 
-    public GamePlayScreen() {
+    private IScreenManager screenManager;
+    
+    public GamePlayScreen(IScreenManager manager) {
+        this.screenManager = manager;
         this.board = new int[HEIGHT][WIDTH];
         this.scanner = new Scanner(System.in);
         this.random = new Random();
@@ -329,6 +332,7 @@ public class GamePlayScreen implements IGameScreen {
 
     @Override
     public void renderGraphics() {
+        ScreenManagerImpl.clearConsole();
         System.out.println("\n[TETRIS 2048 FUSION - DEMO]");
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println();
