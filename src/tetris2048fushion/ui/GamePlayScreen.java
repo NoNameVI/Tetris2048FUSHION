@@ -14,6 +14,7 @@ import java.util.Scanner;
  * Màn hình chơi game chính chạy trên terminal theo phong cách demo.
  */
 public class GamePlayScreen implements IGameScreen {
+
     private static final int WIDTH = 10;
     private static final int HEIGHT = 20;
     private static final int[] CELL_VALUES = {2, 4, 8};
@@ -31,7 +32,11 @@ public class GamePlayScreen implements IGameScreen {
     private final Random random;
 
     private IScreenManager screenManager;
-    
+
+    public GamePlayScreen() {
+        this(new ScreenManagerImpl());
+    }
+
     public GamePlayScreen(IScreenManager manager) {
         this.screenManager = manager;
         this.board = new int[HEIGHT][WIDTH];
@@ -391,11 +396,13 @@ public class GamePlayScreen implements IGameScreen {
     }
 
     public static void main(String[] args) {
+
         GamePlayScreen screen = new GamePlayScreen();
         screen.start();
     }
 
     private static class Piece {
+
         private final List<int[]> blocks;
         private int row;
         private int col;
