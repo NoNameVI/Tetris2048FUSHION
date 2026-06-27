@@ -6,6 +6,10 @@ public class AuxiliaryScreens implements IGameScreen {
     private Scanner sc = new Scanner(System.in);
     private IScreenManager screenManager;
 
+    public AuxiliaryScreens() {
+        this(new ScreenManagerImpl());
+    }
+
     public AuxiliaryScreens(IScreenManager manager) {
         this.screenManager = manager;
     }
