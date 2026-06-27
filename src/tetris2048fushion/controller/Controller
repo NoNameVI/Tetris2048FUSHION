@@ -11,20 +11,23 @@ public class Controller implements IGameController {
     public void setupControls(JPanel panel, AbstractPolyomino currentBlock, IGridBoard grid) {
         InputMap inputMap = panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap actionMap = panel.getActionMap();
-// Mũi tên
+
+        // Cấu hình phím Mũi tên
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "MoveLeft");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "MoveRight");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "MoveDown");
-// WASD
+
+        // Cấu hình phím WASD
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0), "MoveLeft");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0), "MoveRight");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0), "MoveDown");
 
+        // Liên kết phím với hành động
         actionMap.put("MoveLeft", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 handleInputLeft(currentBlock, grid);
-                panel.repaint();
+                panel.repaint(); // Cập nhật đồ họa sau khi di chuyển
             }
         });
 
