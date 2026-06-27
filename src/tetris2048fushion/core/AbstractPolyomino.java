@@ -4,6 +4,7 @@
  */
 package tetris2048fushion.core;
 
+import java.util.Random;
 /**
  * Đại diện cho các khối gạch rơi tự do (Polyominoes).
  *
